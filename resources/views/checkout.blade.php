@@ -43,11 +43,11 @@
                             <input type="radio" name="payment_method" value="cod" class="mr-2" checked>
                             Cash on Delivery
                         </label>
-                        {{-- 
+                        
                         <label class="flex items-center border border-gray-300 px-4 py-2 rounded-md">
                             <input type="radio" name="payment_method" value="khalti" class="mr-2">
-                            Khalti (Pay Online)
-                        </label> --}}
+                            Khalti by IME (Pay Online)
+                        </label>
                     </div>
                 </div>
 

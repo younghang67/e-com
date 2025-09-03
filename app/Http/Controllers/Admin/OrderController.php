@@ -62,18 +62,11 @@ class OrderController extends Controller
                 $order->payment->save();
             }
         }
-        if ($validated['status'] === 'shipped') {
-            foreach ($order->orderItems as $item) {
-                $product = $item->product;
-                if ($product) {
-                    if (!$item->stock_reduced) {
-                        $product->stock = max(0, $product->stock - $item->quantity);
-                        $product->save();
-
-                        $item->stock_reduced = true;
-                        $item->save();
-                    }
-                }
+        foreach ($order->orderItems as $item) {
+            $product = $item->product;
+            if ($product) {
+                $product->stock = max(0, $product->stock - $item->quantity);
+                $product->save();
             }
         }
 

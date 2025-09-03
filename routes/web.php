@@ -24,8 +24,8 @@ Route::get('/product/{id}', [PageController::class, 'productDetail'])->name('pro
 Route::get('/category/{id}/products', [PageController::class, 'showCategoryProducts'])->name('category.products');
 Route::get('/search', [PageController::class, 'search'])->name('search.products');
 
-// Route::post('/khalti/verify', [KhaltiPaymentController::class, 'initiate'])->name('khalti.purchase');
-// Route::get('/payment-success/', [KhaltiPaymentController::class, 'success'])->name('khalti.return');
+Route::post('/khalti/verify', [KhaltiPaymentController::class, 'initiate'])->name('khalti.purchase');
+Route::get('/payment-success/', [KhaltiPaymentController::class, 'success'])->name('khalti.return');
 
 
 Route::middleware('auth')->group(function () {

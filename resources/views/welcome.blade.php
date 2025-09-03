@@ -39,7 +39,7 @@
                 <i class="fas fa-credit-card text-gray-600"></i>
             </div>
             <h3 class="text-sm font-medium">Easy PAYMENT</h3>
-            <p class="text-xs text-gray-500">COD</p>
+            <p class="text-xs text-gray-500">COD/Online payment</p>
         </div>
         <div class="flex items-center justify-center flex-col text-center">
             <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-3">
@@ -67,18 +67,7 @@
                         <div class="relative overflow-hidden rounded-lg mb-3">
                             <img src="{{ asset(optional($product)->main_image ? 'storage/' . optional($product)->main_image : 'img.png') }}"
                                 alt="{{ optional($product)->name ?? 'Product Image' }}" class="w-full h-64 object-cover">
-                            <div
-                                class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <form method="POST" action="{{ route('cart.add') }}" class="mt-6">
-                                    @csrf
-                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                    <input type="hidden" name="quantity" value="1">
-                                    <button type="submit"
-                                        class="bg-white text-gray-800 rounded-full w-10 h-10 flex items-center justify-center mx-1">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
-                                </form>
-                            </div>
+
                         </div>
 
                         <div class="flex items-center mb-1">
@@ -126,18 +115,7 @@
                             <img src="{{ asset(isset($product) && $product->main_image ? 'storage/' . $product->main_image : 'img.png') }}"
                                 alt="{{ isset($product) ? $product->name : 'Product Image' }}"
                                 class="w-full h-64 object-cover">
-                            <div
-                                class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <form method="POST" action="{{ route('cart.add') }}" class="mt-6">
-                                    @csrf
-                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                    <input type="hidden" name="quantity" value="1">
-                                    <button type="submit"
-                                        class="bg-white text-gray-800 rounded-full w-10 h-10 flex items-center justify-center mx-1">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
-                                </form>
-                            </div>
+
                         </div>
 
                         <div class="flex items-center mb-1">
