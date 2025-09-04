@@ -68,8 +68,46 @@
     </header>
 
     <!-- Content -->
-    <main class="min-h-[80vh]">
+    <main class="min-h-[80vh] relative">
         @yield('content')
+
+        <div x-data="{ showChat: false }" class="fixed bottom-14 right-6 z-50">
+            <div x-show="showChat" x-transition class="flex flex-col h-96 bg-gray-100">
+                <div class="bg-blue-600 text-white p-4 flex items-center justify-between shadow">
+                    <h2 class="text-lg font-semibold">Chat with Support</h2>
+                    <button @click="showChat = !showChat"
+                        class="text-sm bg-white text-blue-600 px-3 py-1 rounded hover:bg-gray-200">
+                        X
+                    </button>
+                </div>
+
+                <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4">
+                    <div class="flex items-start space-x-2">
+                        <div class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg max-w-xs">
+                            Hello 👋 How can I help you today?
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end">
+                        <div class="bg-blue-600 text-white px-4 py-2 rounded-lg max-w-xs">
+                            I want to know more about your services.
+                        </div>
+                    </div>
+                </div>
+
+                <form class="bg-white p-4 border-t flex items-center space-x-2">
+                    <input id="chat-input" type="text" placeholder="Type a message..."
+                        class="flex-1 border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button id="send-btn" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700">
+                        Send
+                    </button>
+                </form>
+            </div>
+            <button @click="showChat = !showChat" x-show="!showChat"
+                class="bg-blue-600 text-white px-5 py-3 rounded-full shadow-lg hover:bg-blue-700 transition duration-300">
+                chat
+            </button>
+        </div>
     </main>
 
     <!-- Toasts -->
@@ -91,8 +129,10 @@
         </div>
     @endif
 
+
     <!-- Footer -->
-    <footer class="bg-gray-100 pt-12 pb-6 mt-10">
+    <footer class="bg-gray-100 pt-12 pb-6 mt-10 relative">
+
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
                 <h3 class="text-lg font-medium mb-4">Customer Care</h3>

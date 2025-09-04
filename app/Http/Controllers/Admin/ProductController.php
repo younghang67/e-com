@@ -17,8 +17,10 @@ class ProductController extends Controller
         $categories = Category::all();
         $colors = Color::all();
         $sizes = Size::all();
-        $products = Product::with('category')->latest()->simplepaginate(15);;
-        return view('admin.pages.products.index', compact('products', 'categories', 'colors', 'sizes'));;
+        $products = Product::with('category')->latest()->simplepaginate(15);
+        ;
+        return view('admin.pages.products.index', compact('products', 'categories', 'colors', 'sizes'));
+        ;
     }
 
     public function create()

@@ -15,19 +15,18 @@
     }
 @endphp
 <style>
-    .choices__inner, .choices__input, .choices__list--dropdown, .choices__list[aria-expanded]{
+    .choices__inner,
+    .choices__input,
+    .choices__list--dropdown,
+    .choices__list[aria-expanded] {
         background-color: #343a40;
     }
 </style>
 <div {{ $attributes->merge(['class' => 'form-group mt-3']) }}>
     <label for="{{ $name }}">{{ $label }}</label>
 
-    <select
-        name="{{ $multiple ? $name . '[]' : $name }}"
-        id="{{ $name }}"
-        @if ($multiple) multiple @endif
-        class="{{ $selectClasses }}"
-    >
+    <select required name="{{ $multiple ? $name . '[]' : $name }}" id="{{ $name }}"
+        @if ($multiple) multiple @endif class="{{ $selectClasses }}">
         @if (!$multiple)
             <option value="" selected disabled>Select...</option>
         @endif
@@ -36,9 +35,8 @@
 
         @forelse ($values as $value)
             <option value="{{ $value['id'] }}"
-                    @if ($multiple && in_array($value['id'], (array) old($name, $oldValue))) selected
-                    @elseif (!$multiple && $value['id'] == old($name, $oldValue)) selected
-                @endif>
+                @if ($multiple && in_array($value['id'], (array) old($name, $oldValue))) selected
+                    @elseif (!$multiple && $value['id'] == old($name, $oldValue)) selected @endif>
                 {{ $value[$displayColumn] }}
             </option>
         @empty

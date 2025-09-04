@@ -14,8 +14,8 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->foreignId('product_size_id')->constrained('sizes')->onDelete('cascade');
-            $table->foreignId('product_color_id')->constrained('colors')->onDelete('cascade');
+            $table->foreignId('product_size_id')->nullable()->constrained('sizes')->onDelete('cascade');
+            $table->foreignId('product_color_id')->nullable()->constrained('colors')->onDelete('cascade');
             $table->integer('quantity');
             $table->decimal('price', 8, 2); // product price at purchase time
             $table->timestamps();
